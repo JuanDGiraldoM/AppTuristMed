@@ -61,17 +61,35 @@
     <Compile Include="Clases\Hotel.cs" />
     <Compile Include="Clases\SodaProxy.cs" />
     <Compile Include="Clases\WiFi.cs" />
+    <Compile Include="Formularios\FrmEstaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmEstaciones.Designer.cs">
+      <DependentUpon>FrmEstaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmHospitales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmHospitales.Designer.cs">
       <DependentUpon>FrmHospitales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmHoteles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmHoteles.Designer.cs">
+      <DependentUpon>FrmHoteles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmZonasWifi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmZonasWifi.Designer.cs">
+      <DependentUpon>FrmZonasWifi.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\SplashScreen.cs">
       <SubType>Form</SubType>
@@ -81,6 +99,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\FrmHospitales.resx">
+      <DependentUpon>FrmHospitales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
