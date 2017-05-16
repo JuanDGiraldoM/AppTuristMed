@@ -1,14 +1,15 @@
-﻿using AppTuristMed.Formularios;
+﻿using AppTuristMed.Clases;
+using AppTuristMed.Formularios;
 using System;
 using System.Windows.Forms;
 
 namespace AppTuristMed
 {
-    static class Program
+    class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
+        public static string ruta = Application.StartupPath;
+        public static SodaProxy proxy = new SodaProxy();
+
         [STAThread]
         static void Main()
         {
@@ -16,5 +17,21 @@ namespace AppTuristMed
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SplashScreen());
         }
+
+        public static bool InternetAccess()
+        {
+            try
+            {
+                System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry("www.google.com");
+                return true;
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+                return false;
+            }
+        }
+        
+              
     }
 }
