@@ -66,7 +66,7 @@ namespace AppTuristMed.Formularios
 
         private void VerificacionDataBase()
         {
-            oleDbConnection.Open();
+           /* oleDbConnection.Open();
             oleDbDataAdapter.SelectCommand.Connection = oleDbConnection;
             oleDbDataAdapter.SelectCommand.CommandText = "select * from Hoteles";
             if (oleDbDataAdapter.SelectCommand.ExecuteNonQuery() == 0)
@@ -81,6 +81,7 @@ namespace AppTuristMed.Formularios
             if(oleDbDataAdapter.SelectCommand.ExecuteNonQuery() == 0)
                 Program.proxy.ActualizarEstaciones();
             oleDbConnection.Close();
+            */
         }
     }
 }

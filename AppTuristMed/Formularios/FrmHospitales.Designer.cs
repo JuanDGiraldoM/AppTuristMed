@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHospitales));
             this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
             this.oleDbInsertCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDataAdapter = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
             this.table = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +43,11 @@
             // 
             this.oleDbSelectCommand1.CommandText = "SELECT        Hospitales.*\r\nFROM            Hospitales";
             this.oleDbSelectCommand1.Connection = this.oleDbConnection;
+            // 
+            // oleDbConnection
+            // 
+            this.oleDbConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database." +
+    "accdb";
             // 
             // oleDbInsertCommand1
             // 
@@ -117,11 +122,6 @@
                         new System.Data.Common.DataColumnMapping("Ubicacion", "Ubicacion")})});
             this.oleDbDataAdapter.UpdateCommand = this.oleDbUpdateCommand1;
             // 
-            // oleDbConnection
-            // 
-            this.oleDbConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database." +
-    "accdb";
-            // 
             // table
             // 
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -138,7 +138,8 @@
             this.Controls.Add(this.table);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmHospitales";
-            this.Text = "FrmHospitales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Hospitales";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHospitales_FormClosed);
             this.Load += new System.EventHandler(this.FrmHospitales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();

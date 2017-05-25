@@ -30,7 +30,7 @@ namespace AppTuristMed.Formularios
         private void FrmHospitales_Load(object sender, EventArgs e)
         {
             oleDbConnection.Open();
-            oleDbDataAdapter.SelectCommand.CommandText = "select Municipio, Nombre_Sede, Direccion, Telefono, Email, from Hospitales";
+            oleDbDataAdapter.SelectCommand.CommandText = "select * from Hospitales";
             oleDbDataAdapter.SelectCommand.Connection = oleDbConnection;
             DataTable datos = new DataTable();
             oleDbDataAdapter.Fill(datos);
