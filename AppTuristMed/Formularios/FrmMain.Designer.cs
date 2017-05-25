@@ -49,6 +49,7 @@
             this.btnWifi.TabIndex = 0;
             this.btnWifi.Text = "Puntos WiFi Libre";
             this.btnWifi.UseVisualStyleBackColor = true;
+            this.btnWifi.Click += new System.EventHandler(this.btnWifi_Click);
             // 
             // btnEstaciones
             // 
@@ -59,6 +60,7 @@
             this.btnEstaciones.TabIndex = 2;
             this.btnEstaciones.Text = "Estaciones de Servicio\r\n(Gas, Gasolina y Diesel)\r\n";
             this.btnEstaciones.UseVisualStyleBackColor = true;
+            this.btnEstaciones.Click += new System.EventHandler(this.btnEstaciones_Click);
             // 
             // btnHospitales
             // 
@@ -80,6 +82,7 @@
             this.btnHoteles.TabIndex = 4;
             this.btnHoteles.Text = "Hoteles";
             this.btnHoteles.UseVisualStyleBackColor = true;
+            this.btnHoteles.Click += new System.EventHandler(this.btnHoteles_Click);
             // 
             // archivoToolStripMenuItem
             // 

@@ -47,7 +47,6 @@ namespace AppTuristMed.Clases
                     "values ('" + i++ + "','" + hospital.Municipio + "','" + hospital.NombreSede + "','" + hospital.Direccion + "','" + hospital.Telefono + "','" +
                     hospital.Email + "')";
                 Adapter.InsertCommand.ExecuteNonQuery();
-                //Console.WriteLine(hospital.NombreSede + "\t" + hospital.Ubicacion.Longitude.Length);
             }
             Connection.Close();
         }
@@ -67,6 +66,7 @@ namespace AppTuristMed.Clases
                     "values ('" + ++i + "','" + estacion.Municipio + "','" + estacion.NombreComercial + "','" + estacion.Bandera + "','" + estacion.Direccion +
                     "','" + estacion.Producto + "','" + estacion.Precio + "')";
                 Adapter.InsertCommand.ExecuteNonQuery();
+                Console.WriteLine(estacion.Bandera);
             }
             Connection.Close();
             ActualizarEstacionesGas(i);
@@ -83,7 +83,6 @@ namespace AppTuristMed.Clases
                     "values ('" + ++i + "','" + estacion.Ciudad.ToUpper() + "','" + estacion.Estacion.ToUpper() + "','EPM','" + estacion.Direccion + "','GAS','" +
                     estacion.Ubicacion + "')";
                 Adapter.InsertCommand.ExecuteNonQuery();
-                //Console.WriteLine(estacion.Coordenadas.Latitude.ToCharArray());
             }
             Connection.Close();
         }
@@ -102,7 +101,6 @@ namespace AppTuristMed.Clases
                     "values ('" + ++i + "','" + wifi.Comuna + "','" + wifi.Barrio + "','" + wifi.NombreSitio +
                     "','" + wifi.Direccion + "')";
                 Adapter.InsertCommand.ExecuteNonQuery();
-                //Console.WriteLine(wifi.Ubicacion.Latitude.ToCharArray());
             }
             Connection.Close();
             ActualizarZonasWifi1(i);
@@ -120,7 +118,6 @@ namespace AppTuristMed.Clases
                     "values ('" + ++i + "','" + wifi.Comuna + "','" + wifi.Barrio + "','" + wifi.NombreSitio +
                     "','" + wifi.Direccion + "')";
                 Adapter.InsertCommand.ExecuteNonQuery();
-                //Console.WriteLine(wifi.Ubicacion.Latitude.ToCharArray());
             }
             Connection.Close();
         }

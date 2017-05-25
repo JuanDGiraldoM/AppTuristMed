@@ -28,25 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
             this.oleDbDataAdapter = new System.Data.OleDb.OleDbDataAdapter();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbl_act = new System.Windows.Forms.Label();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
+            this.progressBar1.Cursor = System.Windows.Forms.Cursors.Default;
             this.progressBar1.Location = new System.Drawing.Point(48, 189);
             this.progressBar1.MarqueeAnimationSpeed = 20;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(90, 10);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 0;
-            this.progressBar1.UseWaitCursor = true;
             // 
             // oleDbSelectCommand1
             // 
@@ -62,23 +60,26 @@
             // 
             this.oleDbDataAdapter.SelectCommand = this.oleDbSelectCommand1;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // lbl_act
             // 
             this.lbl_act.AutoSize = true;
             this.lbl_act.BackColor = System.Drawing.Color.White;
-            this.lbl_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_act.ForeColor = System.Drawing.Color.Black;
-            this.lbl_act.Location = new System.Drawing.Point(49, 171);
+            this.lbl_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_act.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbl_act.Location = new System.Drawing.Point(45, 170);
             this.lbl_act.Name = "lbl_act";
-            this.lbl_act.Size = new System.Drawing.Size(89, 15);
+            this.lbl_act.Size = new System.Drawing.Size(98, 16);
             this.lbl_act.TabIndex = 1;
             this.lbl_act.Text = "Actualizando";
+            this.lbl_act.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_act.UseWaitCursor = true;
             this.lbl_act.Visible = false;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             // 
             // SplashScreen
             // 
@@ -89,12 +90,12 @@
             this.ClientSize = new System.Drawing.Size(181, 201);
             this.Controls.Add(this.lbl_act);
             this.Controls.Add(this.progressBar1);
+            this.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashScreen";
-            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -106,7 +107,7 @@
         private System.Data.OleDb.OleDbCommand oleDbSelectCommand1;
         private System.Data.OleDb.OleDbConnection oleDbConnection;
         private System.Data.OleDb.OleDbDataAdapter oleDbDataAdapter;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbl_act;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
