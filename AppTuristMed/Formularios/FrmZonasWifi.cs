@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppTuristMed.Formularios
@@ -30,7 +24,7 @@ namespace AppTuristMed.Formularios
         private void FrmZonasWifi_Load(object sender, EventArgs e)
         {
             oleDbConnection.Open();
-            oleDbDataAdapter.SelectCommand.CommandText = "select * from Hoteles";
+            oleDbDataAdapter.SelectCommand.CommandText = "select * from Wifi";
             oleDbDataAdapter.SelectCommand.Connection = oleDbConnection;
             DataTable datos = new DataTable();
             oleDbDataAdapter.Fill(datos);

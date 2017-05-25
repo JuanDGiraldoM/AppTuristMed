@@ -8,11 +8,12 @@ namespace AppTuristMed.Formularios
 {
     public partial class SplashScreen : Form
     {
-        private int time { get; set; }
+        SynchronizationContext sync;
 
         public SplashScreen()
         {
             InitializeComponent();
+            sync = SynchronizationContext.Current;
             ClientSize = BackgroundImage.Size;
             BackColor = Color.Black;
             TransparencyKey = Color.Black;
@@ -20,8 +21,7 @@ namespace AppTuristMed.Formularios
 
         private void SplashScreen_Load(object sender, EventArgs e)
         {
-            time = 5;
-            timer1.Start();
+            backgroundWorker.RunWorkerAsync();
             oleDbConnection.ConnectionString = @"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Program.ruta + @"\DataBase.accdb";
             if (!File.Exists(oleDbConnection.DataSource))
             {
@@ -43,45 +43,71 @@ namespace AppTuristMed.Formularios
             
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (time > 0)
-                time--;
-            else
+            oleDbConnection.Open();
+            backgroundWorker.ReportProgress(10);
+            oleDbDataAdapter.SelectCommand.Connection = oleDbConnection;
+            oleDbDataAdapter.SelectCommand.CommandText = "select count(*) from Hospitales";
+            if (oleDbDataAdapter.SelectCommand.ExecuteScalar().ToString().Equals("0"))
             {
-                if (!Program.InternetAccess())
-                    MessageBox.Show(this, "No hay acceso a Internet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else
+                sync.Post(a =>
                 {
-                    Thread thread = new Thread(VerificacionDataBase);
                     lbl_act.Visible = true;
-                    thread.Start();
-                    thread.Join();                    
-                }
-                timer1.Stop();
-                new FrmMain(oleDbConnection.ConnectionString).Show();
-                Hide();
+                }, null);
+                Program.proxy.ActualizarHospitales();
             }
+            backgroundWorker.ReportProgress(25);
+            Thread.Sleep(100);
+            oleDbDataAdapter.SelectCommand.CommandText = "select count(*) from Estaciones";
+            if (oleDbDataAdapter.SelectCommand.ExecuteScalar().ToString().Equals("0"))
+            {
+                sync.Post(a =>
+                {
+                    lbl_act.Visible = true;
+                }, null);
+                Program.proxy.ActualizarEstaciones();
+            }
+            backgroundWorker.ReportProgress(50);
+            Thread.Sleep(100);
+            oleDbDataAdapter.SelectCommand.CommandText = "select count(*) from Wifi";
+            if (oleDbDataAdapter.SelectCommand.ExecuteScalar().ToString().Equals("0"))
+            {
+                sync.Post(a =>
+                {
+                    lbl_act.Visible = true;
+                }, null);
+                Program.proxy.ActualizarZonasWiFi();
+            }
+            backgroundWorker.ReportProgress(75);
+            Thread.Sleep(100);
+            oleDbDataAdapter.SelectCommand.CommandText = "select count(*) from Hoteles";
+            if (oleDbDataAdapter.SelectCommand.ExecuteScalar().ToString().Equals("0"))
+            {
+                sync.Post(a =>
+                {
+                    lbl_act.Visible = true;
+                }, null);
+                Program.proxy.ActualizarHoteles();
+            }
+            backgroundWorker.ReportProgress(100);
+            Thread.Sleep(100);
+            oleDbConnection.Close();                     
         }
 
-        private void VerificacionDataBase()
+        private void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-           /* oleDbConnection.Open();
-            oleDbDataAdapter.SelectCommand.Connection = oleDbConnection;
-            oleDbDataAdapter.SelectCommand.CommandText = "select * from Hoteles";
-            if (oleDbDataAdapter.SelectCommand.ExecuteNonQuery() == 0)
-                Program.proxy.ActualizarHoteles();
-            oleDbDataAdapter.SelectCommand.CommandText = "select * from Wifi";
-            if (oleDbDataAdapter.SelectCommand.ExecuteNonQuery() == 0)
-                Program.proxy.ActualizarZonasWiFi();
-            oleDbDataAdapter.SelectCommand.CommandText = "select * from Hospitales";
-            if (oleDbDataAdapter.SelectCommand.ExecuteNonQuery() == 0)
-                Program.proxy.ActualizarHospitales();
-            oleDbDataAdapter.SelectCommand.CommandText = "select * from Estaciones";
-            if(oleDbDataAdapter.SelectCommand.ExecuteNonQuery() == 0)
-                Program.proxy.ActualizarEstaciones();
-            oleDbConnection.Close();
-            */
+            progressBar1.Value = e.ProgressPercentage;
+            if(e.ProgressPercentage == 100)
+            {
+                sync.Post(a =>
+                {
+                    lbl_act.Visible = false;
+                    new FrmMain(oleDbConnection.ConnectionString).Show();
+                    Hide();
+
+                }, null);
+            }
         }
     }
 }
