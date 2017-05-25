@@ -125,16 +125,16 @@
             // table
             // 
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table.Location = new System.Drawing.Point(12, 12);
+            this.table.Location = new System.Drawing.Point(0, 0);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(629, 258);
+            this.table.Size = new System.Drawing.Size(783, 461);
             this.table.TabIndex = 0;
             // 
             // FrmHospitales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 282);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.table);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmHospitales";

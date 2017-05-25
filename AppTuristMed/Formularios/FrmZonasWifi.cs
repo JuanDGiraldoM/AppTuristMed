@@ -29,6 +29,7 @@ namespace AppTuristMed.Formularios
             DataTable datos = new DataTable();
             oleDbDataAdapter.Fill(datos);
             table.DataSource = datos;
+            table.AutoResizeColumns();
             oleDbConnection.Close();
         }
     }
