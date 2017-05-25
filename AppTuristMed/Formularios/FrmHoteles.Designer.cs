@@ -31,26 +31,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHoteles));
             this.table = new System.Windows.Forms.DataGridView();
             this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
             this.oleDbInsertCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDataAdapter = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.SuspendLayout();
             // 
             // table
             // 
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table.Location = new System.Drawing.Point(12, 12);
+            this.table.Location = new System.Drawing.Point(0, 0);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(624, 342);
+            this.table.Size = new System.Drawing.Size(684, 461);
             this.table.TabIndex = 0;
             // 
             // oleDbSelectCommand1
             // 
             this.oleDbSelectCommand1.CommandText = "SELECT        Hoteles.*\r\nFROM            Hoteles";
             this.oleDbSelectCommand1.Connection = this.oleDbConnection;
+            // 
+            // oleDbConnection
+            // 
+            this.oleDbConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database." +
+    "accdb";
             // 
             // oleDbInsertCommand1
             // 
@@ -111,19 +116,16 @@
                         new System.Data.Common.DataColumnMapping("Propietario", "Propietario")})});
             this.oleDbDataAdapter.UpdateCommand = this.oleDbUpdateCommand1;
             // 
-            // oleDbConnection
-            // 
-            this.oleDbConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database." +
-    "accdb";
-            // 
             // FrmHoteles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 366);
+            this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.table);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmHoteles";
-            this.Text = "FrmHoteles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Hoteles";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHoteles_FormClosed);
             this.Load += new System.EventHandler(this.FrmHoteles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();

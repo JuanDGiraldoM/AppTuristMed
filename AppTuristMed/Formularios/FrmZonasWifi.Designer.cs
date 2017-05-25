@@ -31,26 +31,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmZonasWifi));
             this.table = new System.Windows.Forms.DataGridView();
             this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
             this.oleDbInsertCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDataAdapter = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbConnection = new System.Data.OleDb.OleDbConnection();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.optimizarBúsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // table
             // 
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table.Location = new System.Drawing.Point(12, 12);
+            this.table.Location = new System.Drawing.Point(0, 27);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(611, 357);
+            this.table.Size = new System.Drawing.Size(787, 435);
             this.table.TabIndex = 0;
             // 
             // oleDbSelectCommand1
             // 
             this.oleDbSelectCommand1.CommandText = "SELECT        Wifi.*\r\nFROM            Wifi";
             this.oleDbSelectCommand1.Connection = this.oleDbConnection;
+            // 
+            // oleDbConnection
+            // 
+            this.oleDbConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database." +
+    "accdb";
             // 
             // oleDbInsertCommand1
             // 
@@ -118,23 +126,41 @@
                         new System.Data.Common.DataColumnMapping("Ubicacion", "Ubicacion")})});
             this.oleDbDataAdapter.UpdateCommand = this.oleDbUpdateCommand1;
             // 
-            // oleDbConnection
+            // menuStrip1
             // 
-            this.oleDbConnection.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\bin\\Debug\\Database." +
-    "accdb";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optimizarBúsquedaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // optimizarBúsquedaToolStripMenuItem
+            // 
+            this.optimizarBúsquedaToolStripMenuItem.Name = "optimizarBúsquedaToolStripMenuItem";
+            this.optimizarBúsquedaToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
+            this.optimizarBúsquedaToolStripMenuItem.Text = "Optimizar Búsqueda";
             // 
             // FrmZonasWifi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 381);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.table);
+            this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmZonasWifi";
-            this.Text = "FrmZonasWifi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Zonas WiFi";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmZonasWifi_FormClosed);
             this.Load += new System.EventHandler(this.FrmZonasWifi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -147,5 +173,7 @@
         private System.Data.OleDb.OleDbCommand oleDbUpdateCommand1;
         private System.Data.OleDb.OleDbCommand oleDbDeleteCommand1;
         private System.Data.OleDb.OleDbDataAdapter oleDbDataAdapter;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem optimizarBúsquedaToolStripMenuItem;
     }
 }

@@ -47,7 +47,7 @@
             this.btnWifi.Name = "btnWifi";
             this.btnWifi.Size = new System.Drawing.Size(177, 35);
             this.btnWifi.TabIndex = 0;
-            this.btnWifi.Text = "Puntos WiFi Libre";
+            this.btnWifi.Text = "Zonas WiFi Libre";
             this.btnWifi.UseVisualStyleBackColor = true;
             this.btnWifi.Click += new System.EventHandler(this.btnWifi_Click);
             // 
