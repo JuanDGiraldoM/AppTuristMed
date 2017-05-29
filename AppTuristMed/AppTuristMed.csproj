@@ -13,6 +13,22 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +49,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>846AA19A888C646DA6A2C1E0F799C376F0A4F95E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AppTuristMed_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -43,6 +71,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,23 +84,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Estacion.cs" />
-    <Compile Include="Clases\EstacionGas.cs" />
-    <Compile Include="Clases\Hospital.cs" />
-    <Compile Include="Clases\Hotel.cs" />
+    <Compile Include="Clases\AlgoritmoGenetico.cs" />
+    <Compile Include="Clases\Cluster.cs" />
+    <Compile Include="Clases\DataContract\Estacion.cs" />
+    <Compile Include="Clases\DataContract\EstacionGas.cs" />
+    <Compile Include="Clases\DataContract\Hospital.cs" />
+    <Compile Include="Clases\DataContract\Hotel.cs" />
+    <Compile Include="Clases\Individuo.cs" />
+    <Compile Include="Clases\Registro.cs" />
     <Compile Include="Clases\SodaProxy.cs" />
-    <Compile Include="Clases\WiFi.cs" />
+    <Compile Include="Clases\Ubicacion.cs" />
+    <Compile Include="Clases\DataContract\WiFi.cs" />
+    <Compile Include="Clases\ZonaWiFi.cs" />
+    <Compile Include="Formularios\FrmEstaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmEstaciones.Designer.cs">
+      <DependentUpon>FrmEstaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmHospitales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmHospitales.Designer.cs">
       <DependentUpon>FrmHospitales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmHoteles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmHoteles.Designer.cs">
+      <DependentUpon>FrmHoteles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmZonasWifi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmZonasWifi.Designer.cs">
+      <DependentUpon>FrmZonasWifi.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\SplashScreen.cs">
       <SubType>Form</SubType>
@@ -81,8 +134,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\FrmEstaciones.resx">
+      <DependentUpon>FrmEstaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmHospitales.resx">
+      <DependentUpon>FrmHospitales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmHoteles.resx">
+      <DependentUpon>FrmHoteles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmZonasWifi.resx">
+      <DependentUpon>FrmZonasWifi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
@@ -97,6 +162,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="AppTuristMed_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,7 +180,18 @@
   <ItemGroup>
     <None Include="Resources\icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon.png" />
   </ItemGroup>
