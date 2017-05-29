@@ -59,7 +59,7 @@ namespace AppTuristMed.Formularios
 
                 AlgoritmoGenetico algoritmo = new AlgoritmoGenetico(0.5, 0.5, 10, 100, 1000);
 
-                Cluster[] clusters = algoritmo.Clustering(zonas, new Ubicacion(6.216978197974636, -75.58387069555465));
+                Cluster[] clusters = algoritmo.Clustering(zonas, Program.location);
                 Cluster cercano = null;
                 double distancia = 0;
                 double distancia_tmp = 0;
