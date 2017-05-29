@@ -9,6 +9,7 @@ namespace AppTuristMed
     {
         public static string ruta = Application.StartupPath;
         public static SodaProxy proxy = new SodaProxy();
+        public static Ubicacion location = Ubicacion.ObtenerUbicacion();
 
         [STAThread]
         static void Main()

@@ -38,6 +38,8 @@
             this.oleDbDataAdapter = new System.Data.OleDb.OleDbDataAdapter();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optimizarBúsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -141,12 +143,30 @@
             this.optimizarBúsquedaToolStripMenuItem.Name = "optimizarBúsquedaToolStripMenuItem";
             this.optimizarBúsquedaToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.optimizarBúsquedaToolStripMenuItem.Text = "Optimizar Búsqueda";
+            this.optimizarBúsquedaToolStripMenuItem.Click += new System.EventHandler(this.OptimizarBúsquedaToolStripMenuItem_Click);
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_DoWork);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.progressBar.Enabled = false;
+            this.progressBar.Location = new System.Drawing.Point(133, 1);
+            this.progressBar.MarqueeAnimationSpeed = 10;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(639, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 2;
+            this.progressBar.Visible = false;
             // 
             // FrmZonasWifi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.table);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -175,5 +195,7 @@
         private System.Data.OleDb.OleDbDataAdapter oleDbDataAdapter;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optimizarBúsquedaToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
